@@ -92,7 +92,8 @@ object_patch_verify_safety_single(struct object_file *o,
 		kpfatal("unknown direction");
 
 	do {
-		print_address_closest_func(LOG_INFO, o, cur, direction == ACTION_UNAPPLY_PATCH);
+		if (log_level >= LOG_DEBUG)
+			print_address_closest_func(LOG_DEBUG, o, cur, direction == ACTION_UNAPPLY_PATCH);
 
 		unw_get_reg(cur, UNW_REG_IP, &ip);
 
